@@ -2,7 +2,7 @@
 
 body {
     font-family: Karla;
-    padding: 32px 0 0 300px;
+    padding: 32px 50px 0 350px;
 
 }
 
@@ -21,3 +21,6 @@ ul#sidenav-1 *{
 }
 
 #mapid { height: 50vh; }
+
+nav {
+}
