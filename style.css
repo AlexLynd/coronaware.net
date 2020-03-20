@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Karla');
+
+body {
+    font-family: Karla;
+    padding: 32px 0 0 300px;
+
+}
+
+.centered {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+ul#sidenav-1 *{
+    color: white;
+}
+
+#mapid { height: 50vh; }
