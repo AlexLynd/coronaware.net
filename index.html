@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Coronaware | OC Outbreaks</title>
-        <link rel= "stylesheet" type= "text/css" href= "style.css">
+        <title>Coronaware | Stats for OC</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -16,127 +15,222 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
 
+   <link rel= "stylesheet" type= "text/css" href= "style.css">
+
         <meta charset="UTF-8">
         
-    </head><nav style="width: 100vw; left: 0; top: 0; position: absolute; z-index: 100;"><a href="#" class="brand-logo center">Coronaware</a> 
-        <a href="#" data-target="sidenav-1" class="left sidenav-trigger hide-on-medium-and-up"><i class="material-icons">menu</i></a></nav>
+    </head>
     <body class = "grey lighten-3">
                 
-
-        <ul id="sidenav-1" class="sidenav sidenav-fixed blue-grey darken-4" style="padding-top: 32px">
-            
-            <li><a class="waves-effect" href="#!"><i class="material-icons">error</i>What to Know</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">map</i>Map</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">error</i>News</a></li>
-           
+        <nav class = "grey darken-4" style="padding-left: 32px;"><a href="#" class="brand-logo ">coronaware</a> 
+            <a href="#" data-target="sidenav-1" class="left sidenav-trigger hide-on-medium-and-up"><i class="material-icons">menu</i></a>
+        </nav>
+        <ul id="sidenav-1" class="sidenav sidenav-fixed blue-grey darken-4" >
+            <li><a class="waves-effect" href="index.html"><i class="material-icons">timeline</i>Stats</a></li>
+            <li><a class="waves-effect" href="map.html"><i class="material-icons">map</i>Map</a></li>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">warning</i>What to Know</a></li>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">announcement</i>News</a></li>
             <li><div class="divider"></div></li>
-
-
             <li><a class="waves-effect" href="#!" ><i class="material-icons">email</i>Contact</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">error</i>About</a></li>
-        </div>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">info</i>About</a></li>
         </ul>
         
-        <nav class = "blue-grey darken-4" id= "menu" style = "display: none;">
-            <a href="#" data-target="sidenav-1" class="left sidenav-trigger hide-on-medium-and-up"><i class="material-icons">menu</i></a>
-            
-        </nav>
         <script>
-
-            function foo () {
-                var elems = $('.sidenav');
-                    var instances = M.Sidenav.init(elems);
-                    if (instances[0]["isOpen"]) { $(menu).hide(); }
-                    else { $(menu).show(); }
-            }
             $(document).ready(function(){
-                $('.dropdown-trigger').dropdown();
-        
-                foo();
-                window.onresize = function(event) {
-                    foo();
+                $('select').formSelect();
+                $('.sidenav').sidenav(); 
+                window.onresize = function(event) { 
+                    $('.sidenav').sidenav(); 
+                    width = document.documentElement.clientWidth;
+                    if (width < 1300){
+                        $('.resize').removeClass('s6');
+                        $('.resize').addClass('s12');
+                    }
+                    else {
+                        $('.resize').removeClass('s12');
+                        $('.resize').addClass('s6');
+                    }
                 }
-            });
-           
 
+            });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+            <main>
+            <div class="row flex">
+                <div class="col s12"><h3>65 total cases and 0 deaths as of 3/20/20 (Orange County).  &nbsp; </h3><h3><a>See Map for affected areas.</a></h3></div>
+                <div class="col s6 resize"> 
+                    <div class = "card">
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Active Cases</option>
+                                <option value="2">Deaths</option>
+                            </select>
+                            <label>Sort By</label>
+                        </div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="col s6 resize"> 
+                    <div class = "card">
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Spread Vectors</option>
+                                <option value="2">Gender</option>
+                                <option value="3">Age</option>
+                            </select>
+                            <label>Sort By</label>
+                        </div>
+                        <div class = ""><canvas id="myChart2"><p>fd</p></canvas></div>
+                    </div>
+                </div>
+                <div class="col s12 "><h3>Covid-19 Cases</h3>
+                    <table class = "responsive-table">
+                    <thead>
+                        <tr style="border-bottom: 3px solid;">
+                            <th></th>
+                            <th>Total Cases</th>
+                            <th class="blue-grey lighten-2">Male</th>
+                            <th class="blue-grey lighten-2">Female</th>
+                            <th class="deep-orange lighten-3">&lt; 18</th>
+                            <th class="deep-orange lighten-3">18-49</th>
+                            <th class="deep-orange lighten-3">50-64</th>
+                            <th class="deep-orange lighten-3">&ge; 65</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cases</td>
+                            <td>65</td>
+                            <td>39</td>
+                            <td>26</td>
+                            <td>1</td>
+                            <td>33</td>
+                            <td>19</td>
+                            <td>12</td>
+                        
+                        </tr>
+                        
+                        <tr style="border-bottom: 3px solid;">
+                            <td>Total Deaths</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
 
-         <div class="row">
-            <div class="col s12"><center><h3 style="margin: 0">Coronaware</h3></center></div>
-            <div class="col s6"><canvas id="myChart"></canvas></div>
-            <div class="col s6"><canvas id="myChart2"></canvas><a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Sort by</a>
+                        </tr>
+                        
+                        <tr>
+                            <td>Travel Related</td>
+                            <td>28</td>
+                            <td>16</td>
+                            <td>12</td>
+                            <td>0</td>
+                            <td>14</td>
+                            <td>10</td>
+                            <td>4</td>
 
-                <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                  <li><a href="#!">vector</a></li>
-                  <li><a href="#!">gender</a></li>
-                  <li><a href="#!">age</a></li>
+                        </tr>
+                        <tr>
+                            <td>Person to Person Spread</td>
+                            <td>7</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td>0</td>
 
-                </ul>   </div>
-            <script>
-                var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
+                        </tr>
+                        <tr>
+                            <td>Community Acquired</td>
+                            <td>26</td>
+                            <td>15</td>
+                            <td>11</td>
+                            <td>1</td>
+                            <td>10</td>
+                            <td>8</td>
+                            <td>7</td>
 
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
+                        </tr>
+                        <tr>
+                            <td>Under Investigation</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>1</td>
 
-    // Configuration options go here
-    options: {}
-
-    
-});
-
-            </script>
-            <script>
-                    var ctxx = document.getElementById('myChart2').getContext('2d');
-var chart = new Chart(ctxx, {
-    // The pie of chart we want to create
-    type: 'pie',
-
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
-
-    // Configuration options go here
-    options: {}
-});
-            </script>
-
-            <div class="col s12">
-                <div id="mapid"></div>
+                        </tr>
+                        </tbody>
+                    </table></div>
                 <script>
-                var mymap = L.map('mapid').setView([33.7175, -117.8311], 11);
-                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoiYWxleGx5bmQiLCJhIjoiY2s4MHE2ZTkxMDI4YzNubnRwNjdvZXFreCJ9.NyRAPZgnTS-MV2nv7dTHUA'
-    }).addTo(mymap);
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'Active Cases',
+                                backgroundColor: '#ee6e73',
+                                borderColor: '#ee6e73',
+                                data: [0, 10, 5, 2, 20, 30, 45]
+                            }]
+                        },
+                        options: {}
+                    });
+                    var ctx2 = document.getElementById('myChart2').getContext('2d');
+                    var options = {
+                        segmentShowStroke: false
+                    };
+                    var chart = new Chart(ctx2, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Travel', 'Person to Person (known)', 'Community Acquired', 'Under Investigation'],
+                            datasets: [{
+                                label: 'My First dataset',
+                                backgroundColor: ["#1f1231", "#c51162", "#aa00ff", "#90caf9"],
+                                borderColor: "#111111",
+                                borderWidth: 0,
+                                data: [28, 7, 26, 4]
+                            }]
+                        },
+                        options: {}
+                    });
                 </script>
-            </div>
+            </div> <!-- fuck -->
+        </main>
+        <footer class="page-footer grey darken-4">
+            <div class="container">
+              <div class="row">
+                <div class="col l6 s12">
+                  <h5 class="white-text">Coronaware OC</h5>
+                  <p class="grey-text text-lighten-4">All information on this website updated daily, provided by OC Health Info.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Links</h5>
+                  <ul>
+                    <li><a class="grey-text text-lighten-3" href="https://www.ochealthinfo.com/phs/about/epidasmt/epi/dip/prevention/novel_coronavirus">Official OC Health Info</a></li>
+                    <li><a class="grey-text text-lighten-3" href="">Things to Know About CoronaVirus</a></li>
 
-          </div>
-                
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              <div class="container">
+              © 2020 Coronaware
+              <a class="grey-text text-lighten-4 right" href="#!">Created by Alex Lynd / Robin Gan</a>
+              </div>
+            </div>
+          </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
+    
 </html>
