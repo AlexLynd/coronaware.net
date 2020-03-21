@@ -2,12 +2,15 @@
 
 body {
     font-family: Karla;
-    
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 
 }
 main {
     width: 100%;
     padding: 114px 50px 50px 350px;
+    flex: 1 0 auto;
 }
 main#map {
     padding: 104px 40px 40px 340px; 
@@ -90,14 +93,8 @@ nav {
     }
 }
 
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-      
+@media only screen and (max-width: 700px) {
+    main {
+        padding: 64px 20px;
+    }
+}
