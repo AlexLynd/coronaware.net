@@ -28,20 +28,16 @@
         <ul id="sidenav-1" class="sidenav sidenav-fixed blue-grey darken-4" >
             <li><a class="waves-effect" href="index.html"><i class="material-icons">timeline</i>Stats</a></li>
             <li><a class="waves-effect" href="map.html"><i class="material-icons">map</i>Map</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">warning</i>What to Know</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">announcement</i>News</a></li>
+            <li><a class="waves-effect" href="what-to-know.html"><i class="material-icons">warning</i>What to Know</a></li>
+            <li><a class="waves-effect" href="news.html"><i class="material-icons">announcement</i>News</a></li>
             <li><div class="divider"></div></li>
-            <li><a class="waves-effect" href="#!" ><i class="material-icons">email</i>Contact</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">info</i>About</a></li>
+            <li><a class="waves-effect" href="contact.html" ><i class="material-icons">email</i>Contact</a></li>
+            <li><a class="waves-effect" href="about.html"><i class="material-icons">info</i>About</a></li>
         </ul>
         
         <script>
-            $(document).ready(function(){
-                $('select').formSelect();
-                $('.sidenav').sidenav(); 
-                window.onresize = function(event) { 
-                    $('.sidenav').sidenav(); 
-                    width = document.documentElement.clientWidth;
+            function chartsize() {
+                width = document.documentElement.clientWidth;
                     if (width < 1300){
                         $('.resize').removeClass('s6');
                         $('.resize').addClass('s12');
@@ -50,6 +46,14 @@
                         $('.resize').removeClass('s12');
                         $('.resize').addClass('s6');
                     }
+            }
+            $(document).ready(function(){
+                $('select').formSelect();
+                $('.sidenav').sidenav(); 
+                chartsize();
+                window.onresize = function(event) { 
+                    $('.sidenav').sidenav(); 
+                    chartsize();
                 }
 
             });
@@ -57,7 +61,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
             <main>
             <div class="row flex">
-                <div class="col s12"><h3>65 total cases and 0 deaths as of 3/20/20 (Orange County).  &nbsp; </h3><h3><a>See Map for affected areas.</a></h3></div>
+                <div class="col s12"><h3>65 total cases and 0 deaths as of 3/20/20 (Orange County).  &nbsp; </h3><h3><a href = "map.html">See Map for affected areas.</a></h3></div>
                 <div class="col s6 resize"> 
                     <div class = "card">
                         <div class="input-field col s12">
