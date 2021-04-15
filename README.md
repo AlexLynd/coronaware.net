@@ -1,7 +1,7 @@
 # CoronAware.net - OC Corona Virus Tracking Website
 
 ## About
-This repository contains front-end prototype for [coronaware.net](http://coronaware.net), a website dedicated to tracking OC Corona Virus cases and breakouts.  My friend Robin and I created this website since the official OC Health website was poorly formatted, and since we wanted to add a mapping feature that would let us visualize outbreak areas.  Their website has since been updated, but we implemented an [AI that predicted case outbreaks](https://github.com/robingan7/coronaware.net)  before archiving the site.
+This repository contains the frontend prototype for [coronaware.net](http://coronaware.net), a website dedicated to tracking OC Corona Virus cases and breakouts.  My friend Robin and I created this website since the official OC Health website was poorly organized, and since we wanted to add a mapping feature that would let us visualize outbreak areas.  Their website has since been updated, but we implemented an [AI that predicted case outbreaks](https://github.com/robingan7/coronaware.net)  before archiving the site.
 
 ## Links
 [CoronAware](http://coronaware.net)  
@@ -26,4 +26,3 @@ This repository contains front-end prototype for [coronaware.net](http://coronaw
   <br>
   <br>
 </p>
-
