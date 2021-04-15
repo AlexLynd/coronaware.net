@@ -17,7 +17,7 @@ This repository contains front-end prototype for [coronaware.net](http://coronaw
   <br>
   <img alt="CoronAware.net Corona Virus statistics charts" src="/img/charts.png">
   <br>
-  <b>Landing page with spread statistics</b>
+  <b>Main page with spread statistics</b>
   <br>
   <br>
   <img alt="CoronAware.net Corona Virus statistics table" src="/img/table.png">
